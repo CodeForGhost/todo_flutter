@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/db_model.dart';
+import 'package:todo/models/todo_model.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:todo/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // var db = DatabaseConnect();
+  // await db.insertTodo(TodoModel(
+  //     id: 1, title: 'title', creationDate: DateTime.now(), isChecked: false));
+
+  // print(await db.getTodo());
   runApp(const MyApp());
 }
 
@@ -15,41 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Todo')),
-      body: ListView(
-        children: const <Widget>[
-          Card(child: ListTile(title: Text('One-line ListTile'))),
-          Card(
-            child: ListTile(
-              leading: FlutterLogo(),
-              title: Text('One-line with leading widget'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              // leading: ,
-              title: Text('One-line with trailing widget'),
-              trailing: Icon(Icons.delete),
-            ),
-          ),
-        ],
-      ),
+      home: const HomeScreen(),
     );
   }
 }
